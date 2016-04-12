@@ -1,4 +1,8 @@
-credentials.txt
+*.pyc
+.logs/
+.credentials/
 message.txt
-messages_sent.txt
+credentials.txt
 output
+targets.txt
+messages_sent.txt
