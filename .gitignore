@@ -1,6 +1,5 @@
 *.pyc
-.logs/
-.credentials/
+.emails/
 message.txt
 credentials.txt
 output
