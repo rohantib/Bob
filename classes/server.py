@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import smtplib, threading, time, random, traceback
 
+
 class Server():
     'Class to contain server object along with additional variables and methods'
     def __init__(self, email, password):
