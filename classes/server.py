@@ -23,6 +23,7 @@ class Server():
         with open("%s/.targets.txt" % (self.data_path), "r") as targets_file:
             for line in targets_file:
                 self.targets.append(line.strip())
+        #Set Boolean to determine if server is currently spamming to false
         self.currently_spamming = False
         #Overwrite log file
         log_file = open("%s/.log" % (self.data_path), "w")
@@ -66,6 +67,7 @@ class ServerThread(threading.Thread):
 
     def run(self):
         target_index = 0
+        self.server.currently_spamming = True
         while not self.exitFlag:
             try:
                 self.server.send_message(server.targets[targets_index])
@@ -76,3 +78,4 @@ class ServerThread(threading.Thread):
                 self.server.write_to_log(traceback.format_exc())
                 self.exitFlag = 1
         print "Spamming with %s is stopping..." % (self.server.email)
+        self.server.currently_spamming = False
