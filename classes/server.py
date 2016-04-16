@@ -4,7 +4,7 @@ import smtplib, threading, time, random, traceback
 
 class Server():
     'Class to contain server object along with additional variables and methods'
-    def __init__(self, email, password):
+    def __init__(self, email):
         self.email = email
         self.data_path = ".emails/%s" % (email)
         #Get password
@@ -26,33 +26,37 @@ class Server():
         #Set Boolean to determine if server is currently spamming to false
         self.currently_spamming = False
         #Overwrite log file
-        log_file = open("%s/.log" % (self.data_path), "w")
+        log_file = open("%s/output.log" % (self.data_path), "w")
         log_file.close()
 
     def write_to_log(self, output):
-        with open("%s/.log" % (self.data_path), "a") as log_file:
-            log_file.write(output)
+        with open("%s/output.log" % (self.data_path), "a") as log_file:
+            timestamp = time.ctime(time.time())
+            log_file.write("%s - %s" % (timestamp, output))
 
     def write_to_messages_sent(self):
-        with open("%s/.messages_sent.txt" % (self.data_path), "r") as messages_sent_file:
-            messages_sent_file.write(self.messages_sent)
+        with open("%s/.messages_sent.txt" % (self.data_path), "w") as messages_sent_file:
+            messages_sent_file.write(str(self.messages_sent))
 
     def initialize_server(self):
         self.server = smtplib.SMTP('smtp.gmail.com', 587)
-    	server.starttls()
-    	server.login(self.email,self.password)
+        self.server.starttls()
+        self.server.login(self.email,self.password)
 
     def send_message(self, target):
         try:
-			msg = self.messages[random.randrange(len(self.messages))]
-			self.server.sendmail(self.email, target, msg)
-			self.messages_sent += 1
-            self.write_to_messages_sent(messages_sent)
-			self.write_to_log("%s sent to %s" % (self.email, target))
-		except smtplib.SMTPServerDisconnected:
-			self.write_to_log("Disconnected by ban, email %s" % (self.email))
-			self.initialize_server()
+            msg = self.messages[random.randrange(len(self.messages))]
+            self.server.sendmail(self.email, target, msg)
+            self.messages_sent += 1
+            self.write_to_messages_sent()
+            self.write_to_log("%s sent to %s" % (self.email, target))
+            print "%s sent to %s" % (self.email, target) #Delete after this is all working and command interface is set up
+        except smtplib.SMTPServerDisconnected:
+            self.write_to_log("Disconnected by ban, email %s" % (self.email))
+            print "Disconnected by ban, email %s" % (self.email) #Delete after this is all working and command interface is set up
+            self.initialize_server()
             self.write_to_log("Logged in again to %s" % (self.email))
+            print "Logged in again to %s" % (self.email) #Delete after this is all working and command interface is set up
 
 #Put universal except in thread class
 #Consider calling write_to_messages_sent only when thread is being shut down
@@ -61,21 +65,25 @@ class ServerThread(threading.Thread):
     SECONDS_IN_A_DAY = 24*60*60
     DAILY_LIMIT = 500
 
-    def __init__(self, server):
+    def __init__(self, server_object):
+        threading.Thread.__init__(self)
         self.exitFlag = 0
-        self.server = server
+        self.server_object = server_object
 
     def run(self):
         target_index = 0
-        self.server.currently_spamming = True
+        self.server_object.initialize_server()
+        self.server_object.currently_spamming = True
         while not self.exitFlag:
             try:
-                self.server.send_message(server.targets[targets_index])
-                target_index = (target_index + 1) % len(server.targets)
-                time.sleep(SECONDS_IN_A_DAY/DAILY_LIMIT)
+                self.server_object.send_message(self.server_object.targets[target_index])
+                target_index = (target_index + 1) % len(self.server_object.targets)
+                target_index += 1
+                time.sleep(ServerThread.SECONDS_IN_A_DAY/ServerThread.DAILY_LIMIT)
             except Exception as error:
-                print "Spamming with %s threw an error: %s" % (self.server.email, error.message)
-                self.server.write_to_log(traceback.format_exc())
+                print "Spamming with %s threw an error: %s" % (self.server_object.email, error.message)
+                self.server_object.write_to_log(traceback.format_exc())
                 self.exitFlag = 1
-        print "Spamming with %s is stopping..." % (self.server.email)
-        self.server.currently_spamming = False
+        print "Spamming with %s is stopping..." % (self.server_object.email)
+        self.server_object.server.quit()
+        self.server_object.currently_spamming = False
