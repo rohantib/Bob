@@ -2,7 +2,7 @@
 Set up emails with a dictionary containing server and thread objects
 """
 import os
-import classes
+import classes.server
 
 def initialize_servers_and_threads():
 	"""

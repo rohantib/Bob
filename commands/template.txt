@@ -1,0 +1,19 @@
+"""
+Notation: Remove all content within triple-quotes in your code.
+Enter the parameter you wish to enter between <> (for example, in <your_command_name> below,
+enter the name of the command you are making) when writing your code. Copy all other code, CHARACTER FOR CHARACTER.
+If you are good with Python, you can add additional code, like additional imports, where they need to go.
+"""
+
+from classes import *
+from helper_functions import *
+
+def method(self, servers_and_threads):
+    """
+    The most common reason to add your own command is to make a shortcut to do multiple commands.
+    To run another command, type "helpers_for_commands.run_command(<command_name>, servers_and_threads)" below.
+    Remember to pass in the dictionary servers_and_threads! All commands depend on it, and have it passed to them.
+    """
+    """Enter your code below here"""
+
+command_object = command.Command(<your_command_name>, <doc_string_explaining_command_function>, method)

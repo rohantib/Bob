@@ -1,4 +1,3 @@
-#!/usr/bin/python
 import smtplib, threading, time, random, traceback
 
 
