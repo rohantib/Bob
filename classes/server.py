@@ -49,13 +49,10 @@ class Server():
             self.messages_sent += 1
             self.write_to_messages_sent()
             self.write_to_log("%s sent to %s" % (self.email, target))
-            print "%s sent to %s" % (self.email, target) #Delete after this is all working and command interface is set up
         except smtplib.SMTPServerDisconnected:
             self.write_to_log("Disconnected by ban, email %s" % (self.email))
-            print "Disconnected by ban, email %s" % (self.email) #Delete after this is all working and command interface is set up
             self.initialize_server()
             self.write_to_log("Logged in again to %s" % (self.email))
-            print "Logged in again to %s" % (self.email) #Delete after this is all working and command interface is set up
 
 #Put universal except in thread class
 #Consider calling write_to_messages_sent only when thread is being shut down
@@ -70,6 +67,7 @@ class ServerThread(threading.Thread):
         self.server_object = server_object
 
     def run(self):
+        print "Spamming with %s" % (self.server_object.email)
         target_index = 0
         self.server_object.initialize_server()
         self.server_object.currently_spamming = True
