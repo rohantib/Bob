@@ -1,8 +1,7 @@
 #!/usr/bin/python
 from helper_functions import *
 from classes import *
-from commands import * #Run commands file
-import time
+from commands import * #Run all the files in the package "commands" to initialize all command objects
 
 servers_and_threads = set_up_emails.initialize_servers_and_threads()
 
@@ -10,6 +9,10 @@ servers_and_threads = set_up_emails.initialize_servers_and_threads()
 print "Welcome to the Python spammer bot! Type \"help\" for a list of commands."
 
 while True:
-	user_input = raw_input("Enter command: ")
-	command.Command.run_command(servers_and_threads, user_input)
-	print #Line break
+	try:
+		user_input = raw_input("Enter command: ")
+		command.Command.run_command(servers_and_threads, user_input)
+		print #Line break
+	except KeyboardInterrupt:
+		print "Quitting spammer..."
+		exit()
