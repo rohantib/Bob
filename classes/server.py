@@ -67,7 +67,6 @@ class ServerThread(threading.Thread):
         self.server_object = server_object
 
     def run(self):
-        print "Spamming with %s..." % (self.server_object.email)
         target_index = 0
         self.server_object.initialize_server()
         self.server_object.currently_spamming = True

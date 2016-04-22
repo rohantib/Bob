@@ -9,6 +9,7 @@ def method(servers_and_threads):
     email = raw_input("Enter email: ").strip()
     try:
         servers_and_threads[email]["Thread"].start()
+        print "Spamming with %s..." % (email)
     except KeyError:
         print "Email %s is not set up." % (email)
 

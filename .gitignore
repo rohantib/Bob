@@ -1,7 +1,2 @@
 *.pyc
 .emails/
-message.txt
-credentials.txt
-output
-targets.txt
-messages_sent.txt
