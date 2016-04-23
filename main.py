@@ -12,7 +12,7 @@ while True:
 	try:
 		user_input = raw_input("Enter command: ")
 		command.Command.run_command(servers_and_threads, user_input)
-		print #Line break
 	except KeyboardInterrupt:
-		print "Quitting spammer..."
+		print # Line break
+		print "Exitting spammer..."
 		exit()

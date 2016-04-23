@@ -65,6 +65,7 @@ class ServerThread(threading.Thread):
         threading.Thread.__init__(self)
         self.exitFlag = 0
         self.server_object = server_object
+        self.daemon = True #Sets it as daemon thread so that when main thread exits, this is terminated too
 
     def run(self):
         target_index = 0
