@@ -1,6 +1,5 @@
 import smtplib, threading, time, random, traceback
 
-
 class Server():
     'Class to contain server object along with additional variables and methods'
     def __init__(self, email):
@@ -27,6 +26,8 @@ class Server():
         #Overwrite log file
         log_file = open("%s/output.log" % (self.data_path), "w")
         log_file.close()
+        self.status = "Not spamming"
+
 
     def write_to_log(self, output):
         with open("%s/output.log" % (self.data_path), "a") as log_file:
@@ -65,12 +66,15 @@ class ServerThread(threading.Thread):
         threading.Thread.__init__(self)
         self.exitFlag = 0
         self.server_object = server_object
+        self.server_object.currently_spamming = False #Server is not currently spamming
+        self.server_object.status = "Not spamming"
         self.daemon = True #Sets it as daemon thread so that when main thread exits, this is terminated too
 
     def run(self):
         target_index = 0
         self.server_object.initialize_server()
-        self.server_object.currently_spamming = True
+        self.server_object.currently_spamming = True #Server is now spamming
+        self.server_object.status = "Currently spamming"
         while not self.exitFlag:
             try:
                 self.server_object.send_message(self.server_object.targets[target_index])
@@ -78,9 +82,8 @@ class ServerThread(threading.Thread):
                 target_index += 1
                 time.sleep(ServerThread.SECONDS_IN_A_DAY/ServerThread.DAILY_LIMIT)
             except Exception as error:
-                print "Spamming with %s threw an error: %s" % (self.server_object.email, error.message)
+                self.server_object.status = "Not spamming - Error thrown - %s - look in log file for more info" % (error.message)
                 self.server_object.write_to_log(traceback.format_exc())
                 self.exitFlag = 1
-        print "Spamming with %s is stopping..." % (self.server_object.email)
+        self.server_object.write_to_log("Exit flag checked in old thread - Spamming with %s is stopping..." % (self.server_object.email))
         self.server_object.server.quit()
-        self.server_object.currently_spamming = False
