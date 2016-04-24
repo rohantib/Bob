@@ -14,7 +14,6 @@ def method(servers_and_threads):
             print email
         print #Line Break
         email = raw_input("Enter email: ").strip()
-        print #Line break
         try:
             if servers_and_threads[email]["Server"].currently_spamming == False:
                 print "%s is not currently spamming." % (email)
@@ -25,5 +24,6 @@ def method(servers_and_threads):
                 print "Spamming with %s has been stopped." % (email)
         except KeyError:
             print "Email %s is not set up as a spam email yet." % (email)
+        print #Line break
 
 command_object = command.Command("stop_spamming", "Stop spamming with a specified email", method)

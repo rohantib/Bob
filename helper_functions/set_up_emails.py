@@ -1,5 +1,5 @@
 """
-Set up emails with a dictionary containing server and thread objects
+Set up emails with a dictionary containing server and thread objects. Intended to be run by main script.
 """
 import os
 import classes.server

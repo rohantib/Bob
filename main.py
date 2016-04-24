@@ -1,8 +1,9 @@
 #!/usr/bin/python
-from helper_functions import *
-from classes import *
+from helper_functions import set_up_emails
+from classes import command
 from commands import * #Run all the files in the package "commands" to initialize all command objects
 
+#Initialize all servers and their corresponding threads
 servers_and_threads = set_up_emails.initialize_servers_and_threads()
 
 #Welcome message

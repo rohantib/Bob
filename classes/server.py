@@ -82,7 +82,7 @@ class ServerThread(threading.Thread):
                 target_index += 1
                 time.sleep(ServerThread.SECONDS_IN_A_DAY/ServerThread.DAILY_LIMIT)
             except Exception as error:
-                self.server_object.status = "Not spamming - Error thrown - %s - look in log file for more info" % (error.message)
+                self.server_object.status = "Not spamming - Error thrown - %s - look in log file at %s/output.log for more info" % (error.message, self.server_object.data_path)
                 self.server_object.write_to_log(traceback.format_exc())
                 self.exitFlag = 1
         self.server_object.write_to_log("Exit flag checked in old thread - Spamming with %s is stopping..." % (self.server_object.email))

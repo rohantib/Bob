@@ -1,10 +1,3 @@
-"""
-Notation: All the content within triple-quotes is comments. You can remove them safely in your code.
-Enter the parameter you wish to enter between <> (for example, in <your_command_name> below,
-enter the name of the command you are making) when writing your code. Copy all other code, CHARACTER FOR CHARACTER.
-If you are good with Python, you can add additional code, like additional imports, where they need to go.
-"""
-
 from classes import *
 from helper_functions import *
 
@@ -19,4 +12,4 @@ def method(servers_and_threads):
     """
     """Enter your code below here"""
 
-command_object = command.Command(<your_command_name>, <doc_string_explaining_command_function>, method)
+command_object = command.Command("new_email", "Set up a new spam email", method)
