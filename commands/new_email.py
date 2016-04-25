@@ -1,15 +1,38 @@
 from classes import *
 from helper_functions import *
+import os
+
+def email_is_valid(email):
+    """
+    Check if email is valid
+    """
+    at_pos = email.find("@")
+    dot_pos = email.find(".")
+    if at_pos == -1 or dot_pos == -1 or dot_pos == len(email) - 1 or dot_pos = at_pos + 1: #Various email conditions
+        print "That is not a valid email. Please try again."
+        return False
+    elif email[at_pos+1:dot_pos] != "gmail":
+        print "Currently this spammer only supports Gmail. Please enter a Gmail email address."
+        return False
+    return True
 
 def method(servers_and_threads):
-    """
-    The most common reason to add your own command is to make a shortcut to do multiple commands.
-    To run another command, type "command.Command.run_command(servers_and_threads, <command_name>)" below.
-    Remember to pass in the dictionary servers_and_threads! All commands depend on it, and have it passed to them.
-    If you want to write your own code that interacts with the spammer, you will have to understand how the spammer works and
-    what the different functions do. All the code is modularized and somewhat commented, so it should not be too difficult. Classes are in
-    the classes package, and helper functions are in the helper_functions package.
-    """
-    """Enter your code below here"""
+    print # Line break
+    while True:
+        email = raw_input("What is your new spam email? ")
+        if email_is_valid(email):
+            break
+    data_path = ".emails/%s" % (email)
+    if os.path.exists(data_path):
+        print "This email has already been set up as a spam email. If you would like to delete it or edit it, please use those respective commands."
+    else:
+        os.mkdir(data_path)
+        password = raw_input("What is the passwor for this spam email? ")
+        with open("%s/password.txt", "w") as password_file:
+            password_file.write(password)
+        #I am here right now
+
+
+
 
 command_object = command.Command("new_email", "Set up a new spam email", method)
