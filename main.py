@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import helper_functions
 import classes
-import commands #Run all the files in the package "commands" to initialize all command objects
+from commands import * #Run all the files in the package "commands" to initialize all command objects
 
 #Initialize all servers and their corresponding threads
 servers_and_threads = helper_functions.set_up_emails.initialize_servers_and_threads()

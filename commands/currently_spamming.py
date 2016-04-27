@@ -4,8 +4,16 @@ from helper_functions import *
 def method(servers_and_threads):
     print "Emails that are currently spamming:"
     print #Line break
+    spamming_emails = []
     for email in servers_and_threads:
         if servers_and_threads[email]["Server"].currently_spamming == True:
+            spamming_emails.append(email)
+    if len(spamming_emails) == 0:
+        print "No emails are currently spamming."
+    else:
+        print "Emails that are currently spamming:"
+        print #Line break
+        for email in spamming_emails:
             print email
     print #Line break
 

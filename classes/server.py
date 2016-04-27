@@ -24,8 +24,8 @@ class Server():
         #Set Boolean to determine if server is currently spamming to false
         self.currently_spamming = False
         #Overwrite log file
-        log_file = open("%s/output.log" % (self.data_path), "w")
-        log_file.close()
+        with open("%s/output.log" % (self.data_path), "w") as log_file:
+            log_file.write("")
         self.status = "Not spamming"
 
 
