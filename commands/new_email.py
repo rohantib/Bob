@@ -8,7 +8,7 @@ def email_is_valid(email):
     """
     at_pos = email.find("@")
     dot_pos = email.find(".")
-    if at_pos == -1 or dot_pos == -1 or dot_pos == len(email) - 1 or dot_pos = at_pos + 1: #Various email conditions
+    if at_pos == -1 or dot_pos == -1 or dot_pos == len(email) - 1 or dot_pos == at_pos + 1: #Various email conditions
         print "That is not a valid email. Please try again."
         return False
     elif email[at_pos+1:dot_pos] != "gmail":
