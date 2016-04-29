@@ -3,6 +3,7 @@ Contains class Command as a template to make new commands, along with a static f
 especially the main script, to run commands.
 """
 
+#How does this still work?
 class Command():
     list_of_commands = {}
     def __init__(self, keyword, docstring, method):
@@ -17,6 +18,7 @@ class Command():
         """
         Run a command given the name
         """
+        # TODO: Implement arguments so that I can call commands quicker and use commands from other commands
         try:
             Command.list_of_commands[command].method(servers_and_threads)
         except KeyError:

@@ -66,24 +66,24 @@ class ServerThread(threading.Thread):
         threading.Thread.__init__(self)
         self.exitFlag = 0
         self.server_object = server_object
-        self.server_object.currently_spamming = False #Server is not currently spamming
+        self.server_object.currently_spamming = False # Server is not currently spamming
         self.server_object.status = "Not spamming"
-        self.daemon = True #Sets it as daemon thread so that when main thread exits, this is terminated too
+        self.daemon = True # Sets it as daemon thread so that when main thread exits, this is terminated too
 
     def run(self):
-        target_index = 0
-        self.server_object.initialize_server()
-        self.server_object.currently_spamming = True #Server is now spamming
-        self.server_object.status = "Currently spamming"
-        while not self.exitFlag:
-            try:
+        try:
+            target_index = 0
+            self.server_object.initialize_server()
+            self.server_object.currently_spamming = True # Server is now spamming
+            self.server_object.status = "Currently spamming"
+            while not self.exitFlag:
                 self.server_object.send_message(self.server_object.targets[target_index])
                 target_index = (target_index + 1) % len(self.server_object.targets)
                 target_index += 1
                 time.sleep(ServerThread.SECONDS_IN_A_DAY/ServerThread.DAILY_LIMIT)
-            except Exception as error:
-                self.server_object.status = "Not spamming - Error thrown - %s - look in log file at %s/output.log for more info" % (error.message, self.server_object.data_path)
-                self.server_object.write_to_log(traceback.format_exc())
-                self.exitFlag = 1
+        except Exception as error:
+            self.server_object.status = "Not spamming - Error thrown - %s - look in log file at %s/output.log for more info" % (error.message, self.server_object.data_path)
+            self.server_object.write_to_log(traceback.format_exc())
+            self.exitFlag = 2 # Deliberately setting to 2 due to exception
         self.server_object.write_to_log("Exit flag checked in old thread - Spamming with %s is stopping..." % (self.server_object.email))
         self.server_object.server.quit()

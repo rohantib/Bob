@@ -2,7 +2,6 @@ from classes import *
 from helper_functions import *
 
 def method(servers_and_threads):
-    print "Emails that are currently spamming:"
     print #Line break
     spamming_emails = []
     for email in servers_and_threads:
