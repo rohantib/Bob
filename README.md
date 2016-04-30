@@ -25,4 +25,6 @@ This spammer currently only works with Gmail accounts. Support for Yahoo and oth
 # Installation and Dependencies
 This program is written in Python 2.7, and therefore requires that you have a Python 2.7 interpreter installed. To install Python, go to https://www.python.org/downloads/release/python-2711/ in your web browser, download the appropriate file for your operating system, and run the installer. For Linux, Python should be preinstalled. If not, it is available in the default repositories of your package manager.
 
-To run the program, open a terminal, change your working directory to the directory of the spammer, and type 'python main.py' to run it. The program does not modify any files existing outside its own directory.
+To install Bob, click Download Zip on the Github repository page, then extract the zip to wherever you want it to be.
+
+To run the program, open a terminal, change your working directory to Bob's directory, and type 'python main.py' to run it. The program does not modify any files existing outside its own directory.
