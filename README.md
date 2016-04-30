@@ -1,7 +1,11 @@
-# Spambot
+# Bob
 A nice little bot that spams people you don't like.
-Currently in development, developing a terminal interface and multithreading capabilities.
-Not functional as of now.
+
+Now fully functional sporting a very primitive terminal interface! Upgrades to the terminal interface will be coming soon, as it is
+quite irritating to use currently. I do not think I will be making a graphical interface for Bob, though. Sorry!
+There are also a couple errors that could very likely occur that do not have a try-except set up yet. That will be definitely set up soon.
+
+Certain parts are still untested, so there may be bugs. Please do report them in Github's Issues section if you use this and find a bug.
 
 I apologize for the illegibility of parts of the code. In the process of making a simple framework
 to make writing new commands a very simple process that anyone can do, I had to cleverly and illegibly mess
@@ -16,7 +20,7 @@ Any new files in helper_functions or classes made by you will be ignored by the 
 and if there is an error in your new code, the spammer will throw an error at startup.
 DO NOT CHANGE ANY EXISTING FILES OR RISK BREAKING THE SPAMMER!
 
-This spammer currently only works with Gmail accounts. Support for Yahoo will be coming soon.
+This spammer currently only works with Gmail accounts. Support for Yahoo and other emails will be coming soon.
 
 # Dependencies
 This program is written in Python 2.7, and therefore requires that you have a Python 2.7 interpreter installed. To install Python, go to https://www.python.org/downloads/release/python-2711/ in your web browser, download the appropriate file for your operating system, and run the installer. For Linux, Python should be preinstalled. If not, it is available in the default repositories of your package manager.
