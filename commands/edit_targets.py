@@ -43,7 +43,7 @@ def change_target(email, servers_and_threads):
     target_index = target_num - 1 # Makes it zero-based index number
     target = servers_and_threads[email]["Server"].targets[target_index]
     while True:
-        new_email = raw_input("What is the new target you would like to replace %s with? " % (target))
+        new_target = raw_input("What is the new target you would like to replace %s with? " % (target))
         if helpers_for_commands.email_is_valid(new_email):
             break
         else:
