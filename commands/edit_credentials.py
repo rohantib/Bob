@@ -23,14 +23,15 @@ def change_pass(email, servers_and_threads):
 def method(servers_and_threads):
     print # Line break
     print "Existing emails:"
-    for email in servers_and_threads:
-        print email
+    for email_key in servers_and_threads:
+        print email_key
     print # Line break
-    print "Which email would you like to edit the credentials of?"
+    email = raw_input("Which email would you like to edit the credentials of? ")
     if os.path.exists(".emails/%s" % (email)):
         print "The current credentials are: \n"
         print "Email: %s" % (servers_and_threads[email]["Server"].email)
         print "Password: %s" % (servers_and_threads[email]["Server"].password)
+        print # Line break
         while True:
             option = raw_input("Would you like to change the email or the password? ").lower()
             if option == "email":

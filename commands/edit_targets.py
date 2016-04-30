@@ -1,5 +1,6 @@
 from classes import *
 from helper_functions import *
+import os
 
 # Helper functions
 def add_target(email, servers_and_threads):
@@ -57,15 +58,16 @@ def write_targets_to_file(email, servers_and_threads):
 def method(servers_and_threads):
     print # Line break
     print "Existing emails:"
-    for email in servers_and_threads:
-        print email
+    for email_key in servers_and_threads:
+        print email_key
     print # Line break
-    print "Which email would you like to edit the credentials of?"
+    email = raw_input("Which email would you like to edit the targets of? ")
     if os.path.exists(".emails/%s" % (email)):
         print "Current targets for this email are:"
         for index, target in enumerate(servers_and_threads[email]["Server"].targets):
             print "[%d] %s" % (index+1, target)
-        #Get action (add, delete, or change) from user
+        print # Line break
+        # Get action (add, delete, or change) from user
         while True:
             action = raw_input("Would you like to add, change, or delete one of these targets? ").lower()
             if action == "add":
