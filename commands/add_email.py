@@ -33,9 +33,6 @@ def get_and_write_target(data_path):
 
 #Main method
 def method(servers_and_threads):
-    print "Setup for a new email will begin. If you quit during setup, the spammer will be broken, as it has not been made to handle that yet. "
-    print "DO NOT PROVIDE YOUR ACTUAL EMAIL! Provide a spam email you have made specifically for this spammer. "
-    print "You can easily make a new spam email on Gmail by going to the webpage, clicking \"Create an Email\", and entering a random name, username, password, birthday, and gender."
     print # Line break
     email = get_email()
     data_path = ".emails/%s" % (email)
