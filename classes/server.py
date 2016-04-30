@@ -7,7 +7,7 @@ class Server():
         self.data_path = ".emails/%s" % (email)
         #Get password
         with open("%s/.password.txt" % (self.data_path), "r") as pass_file:
-            self.password = pass_file.read() #Do not strip in case user has trailing spaces for password
+            self.password = pass_file.read()[:-1] #Do not strip in case user has trailing spaces for password, but remove trailing \n
         #Get messages sent
         with open("%s/.messages_sent.txt" % (self.data_path), "r") as messages_sent_file:
             self.messages_sent = int(messages_sent_file.read().strip())

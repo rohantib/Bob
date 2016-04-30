@@ -1,5 +1,6 @@
 from classes import *
 from helper_functions import *
+import os
 
 def method(servers_and_threads):
     print # Line break
@@ -20,6 +21,7 @@ def method(servers_and_threads):
         print "Messages:"
         for index, message in enumerate(server.messages):
             print "[%d] - %s" % (index, message)
+        print # Line break
     else:
         print "%s is not an existing spam email." % (email)
 
