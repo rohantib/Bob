@@ -46,7 +46,7 @@ def setup():
     print "Hi! I'm Bob, a lovely little assistant for you to get back at anyone you don't like - the techy way."
     print "Give me an email to spam with, and I'll wreak havoc in their inbox!"
     print "Before you start using me, I need a spam email to start with. I will guide you through setting up everything right now so that we will be spamming ASAP!"
-    print "DO NOT GIVE ME YOUR ACTUAL EMAIL! Provide a spam email you have made specifically for me.
+    print "DO NOT GIVE ME YOUR ACTUAL EMAIL! Provide a spam email you have made specifically for me."
     print "You can easily make a new spam email on Gmail by going to the webpage, clicking \"Create an Email\", and entering a random name, username, password, birthday, and gender."
     print "Once you have done so, follow the instructions to add it so that I can use it."
     print # Line break
