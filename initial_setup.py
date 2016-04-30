@@ -37,7 +37,7 @@ def get_and_write_target(data_path):
     while True:
         print "Enter one target email for this spam email. You can always edit this later."
         target = raw_input("Enter target: ")
-        if helpers_for_commands.email_is_valid(target):
+        if email_is_valid(target):
             break
     with open("%s/.targets.txt" % (data_path), "w") as targets_file:
         targets_file.write(target)
