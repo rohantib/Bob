@@ -1,5 +1,5 @@
 """
-Notation: All the content within triple-quotes is comments. You can remove them safely in your code.
+Notation: All the content within triple-quotes and lines beginning with hashes (#) are comments. You can remove them safely in your code.
 Enter the parameter you wish to enter between <> (for example, in <your_command_name> below,
 enter the name of the command you are making) when writing your code. Copy all other code, CHARACTER FOR CHARACTER.
 If you are good with Python, you can add additional code, like additional imports, where they need to go.
@@ -17,6 +17,7 @@ def method(servers_and_threads):
     what the different functions do. All the code is modularized and somewhat commented, so it should not be too difficult. Classes are in
     the classes package, and helper functions are in the helper_functions package.
     """
-    """Enter your code below here"""
+    # Enter code in place of this
 
+# Uses the Command class to set up your command in a predefined format and makes it accessible in memory
 command_object = command.Command(<your_command_name>, <doc_string_explaining_command_function>, method)

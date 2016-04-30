@@ -8,6 +8,8 @@ def get_email():
         email = raw_input("What is your new spam email? ")
         if helpers_for_commands.email_is_valid(email) == True:
             break
+        else:
+            print "That is not a valid email. Please try again."
     return email
 
 def get_and_write_password(data_path):
@@ -31,7 +33,10 @@ def get_and_write_target(data_path):
 
 #Main method
 def method(servers_and_threads):
-    print "Setup for a new email will begin. If you quit during setup, the spammer will be broken, as it has not been made to handle that yet."
+    print "Setup for a new email will begin. If you quit during setup, the spammer will be broken, as it has not been made to handle that yet. "
+    print "DO NOT PROVIDE YOUR ACTUAL EMAIL! Provide a spam email you have made specifically for this spammer. "
+    print "You can easily make a new spam email on Gmail by going to the webpage, clicking \"Create an Email\", and entering a random name, username, password, birthday, and gender."
+    print # Line break
     email = get_email()
     data_path = ".emails/%s" % (email)
     if os.path.exists(data_path):
@@ -54,7 +59,7 @@ def method(servers_and_threads):
         servers_and_threads[email] = {"Server": email_server, "Thread": server.ServerThread(email_server)}
         print #Line break
         #Output to user
-        print 'Ok! %s is now ready to spam, provided all credentials were entered correctly. If any error was made, you can edit the email with the "edit_email" command, or you can set it up again by deleting and seteting it up again.' % (email)
+        print 'Ok! %s is now ready to spam, provided all credentials were entered correctly. If any error was made, you can edit the email with the "edit_email" command, or you can set it up again by deleting and setting it up again.' % (email)
 
 
 

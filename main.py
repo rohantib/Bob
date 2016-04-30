@@ -7,7 +7,8 @@ from commands import * #Run all the files in the package "commands" to initializ
 servers_and_threads = helper_functions.set_up_emails.initialize_servers_and_threads()
 
 #Welcome message
-print "Welcome to the Python spammer bot! Type \"help\" for a list of commands."
+print "Hey there! Let's start spamming! I'm thirsty to rain it on someone's inbox. Type \"help\" for a list of commands, and let's get going!"
+print "If you desperately need to quit when I'm in the middle of something, hit CTRL+C. But you risk breaking me when you do that, so please try not to!"
 
 while True:
 	try:
@@ -15,5 +16,5 @@ while True:
 		classes.command.Command.run_command(servers_and_threads, user_input)
 	except KeyboardInterrupt:
 		print # Line break
-		print "Exitting spammer..."
+		print "Bob is quitting... Goodbye!"
 		exit()
