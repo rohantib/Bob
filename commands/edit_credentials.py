@@ -36,8 +36,10 @@ def method(servers_and_threads):
             option = raw_input("Would you like to change the email or the password? ").lower()
             if option == "email":
                 change_email(email, servers_and_threads)
+                break
             elif option == "password":
                 change_pass(email, servers_and_threads)
+                break
             else:
                 print 'Invalid option selected. Please enter either "email" or "password" as your choice.'
     else:
