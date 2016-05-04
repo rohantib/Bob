@@ -1,7 +1,7 @@
 # Bob
 A nice little bot that spams people you don't like.
 
-Now fully functional sporting a very primitive terminal interface! Upgrades to the terminal interface will be coming soon, as it is
+Now fully functional with a very primitive terminal interface! Upgrades to the terminal interface will be coming soon, as it is
 quite irritating to use currently. I do not think I will be making a graphical interface for Bob, though. Sorry!
 There are also a couple errors that could very likely occur that do not have a try-except set up yet. That will be definitely set up soon.
 
