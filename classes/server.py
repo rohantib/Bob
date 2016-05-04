@@ -81,7 +81,6 @@ class ServerThread(threading.Thread):
             while not self.exitFlag:
                 self.server_object.send_message(self.server_object.targets[target_index])
                 target_index = (target_index + 1) % len(self.server_object.targets)
-                target_index += 1
                 time.sleep(ServerThread.SECONDS_IN_A_DAY/ServerThread.DAILY_LIMIT)
         except Exception as error:
             self.server_object.status = "Not spamming - Error thrown - %s - look in log file at %s/output.log for more info" % (error.message, self.server_object.data_path)
