@@ -3,12 +3,14 @@ Notation: All the content within triple-quotes and lines beginning with hashes (
 Enter the parameter you wish to enter between <> (for example, in <your_command_name> below,
 enter the name of the command you are making) when writing your code. Copy all other code, CHARACTER FOR CHARACTER.
 If you are good with Python, you can add additional code, like additional imports, where they need to go.
+For <max_arguments_taken> at the bottom, if you do not know what to enter, just enter 0 and request for all input from the user directly in your code with raw_input.
+If you want to accept an arbitrary number of arguments, enter "infinity" for <max_arguments_taken>.
 """
 
 from classes import *
 from helper_functions import *
 
-def method(servers_and_threads):
+def method(servers_and_threads, arguments):
     """
     The most common reason to add your own command is to make a shortcut to do multiple commands.
     To run another command, type "command.Command.run_command(servers_and_threads, <command_name>)" below.
@@ -20,4 +22,4 @@ def method(servers_and_threads):
     # Enter code in place of this
 
 # Uses the Command class to set up your command in a predefined format and makes it accessible in memory
-command_object = command.Command(<your_command_name>, <doc_string_explaining_command_function>, method)
+command_object = command.Command(<your_command_name>, <doc_string_explaining_command_function>, <doc_string_showing_arguments>, <max_arguments_taken>, method)

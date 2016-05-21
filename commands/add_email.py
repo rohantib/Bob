@@ -32,7 +32,7 @@ def get_and_write_target(data_path):
         targets_file.write(target)
 
 #Main method
-def method(servers_and_threads):
+def method(servers_and_threads, arguments):
     print # Line break
     email = get_email()
     data_path = ".emails/%s" % (email)
@@ -60,4 +60,4 @@ def method(servers_and_threads):
 
 
 
-command_object = command.Command("add_email", "Set up an additional spam email", method)
+command_object = command.Command("add_email", "Set up an additional spam email", "", 0, method)

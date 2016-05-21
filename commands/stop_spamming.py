@@ -26,4 +26,4 @@ def method(servers_and_threads):
             print "Email %s is not set up as a spam email yet." % (email)
         print #Line break
 
-command_object = command.Command("stop_spamming", "Stop spamming with a specified email", method)
+command_object = command.Command("stop_spamming", "Stop spamming with a specified email", "", 0, method)

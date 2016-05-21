@@ -45,35 +45,53 @@ def write_messages_to_file(email, servers_and_threads):
     with open("%s/.messages.txt" % (servers_and_threads[email]["Server"].data_path), "w") as messages_file:
         messages_file.write('\n'.join(one_line_messages))
 
-def method(servers_and_threads):
+def method(servers_and_threads, arguments):
     print # Line break
-    print "Existing emails:"
-    for email_key in servers_and_threads:
-        print email_key
-    print # Line break
-    email = raw_input("Which email would you like to edit the messages of? ")
-    if os.path.exists(".emails/%s" % (email)):
-        print "Current messages for this email are:"
-        for index, message in enumerate(servers_and_threads[email]["Server"].messages):
-            print "[%d] \n%s" % (index+1, message)
-        print # Line break
-        # Get action (add, delete, or change) from user
-        while True:
-            action = raw_input("Would you like to add, change, or delete one of these messages? ").lower()
-            if action == "add":
-                add_message(email, servers_and_threads)
-                break
-            elif action == "delete":
-                del_message(email, servers_and_threads)
-                break
-            elif action == "change":
-                change_message(email, servers_and_threads)
-                break
-            else:
-                print 'That is an invalid option. Please enter either "add", "change", or "delete".'
-        # Writes the edits to storage
-        write_messages_to_file(email, servers_and_threads)
+    # Argument Check
+    if len(arguments) != 0:
+        email = arguments[0]
+        if not helpers_for_commands.email_is_valid(email):
+            print "You did not enter a valid email."
+            return
+        elif email not in servers_and_threads.keys():
+            print "Email %s is not an existing email." % (email)
+            return
     else:
-        print "%s does not exist as an available spam email." % (email)
+        # Get email if no email is supplied as argument
+        print "Existing emails:"
+        for email_index, email in enumerate(servers_and_threads.keys()):
+            print "[%d] - %s" % (email_index+1, email)
+        print # Line break
+        try:
+            email_num = int(raw_input("What is the number of the email would you like to edit the messages of? "))
+        except ValueError:
+            print "You did not enter a number."
+        else:
+            if email_num > 0 and email_num <= len(servers_and_threads):
+                email = servers_and_threads.keys()[email_num-1]
+            else:
+                print "Invalid number entered."
+                return
+    print "Current messages for this email are:"
+    for index, message in enumerate(servers_and_threads[email]["Server"].messages):
+        print "[%d] \n%s" % (index+1, message)
+    print # Line break
+    # Get action (add, delete, or change) from user
+    while True:
+        action = raw_input("Would you like to add, change, or delete one of these messages? ").lower()
+        if action == "add":
+            add_message(email, servers_and_threads)
+            break
+        elif action == "delete":
+            del_message(email, servers_and_threads)
+            break
+        elif action == "change":
+            change_message(email, servers_and_threads)
+            break
+        else:
+            print 'That is an invalid option. Please enter either "add", "change", or "delete".'
+    # Writes the edits to storage
+    write_messages_to_file(email, servers_and_threads)
+    print # Line break
 
-command_object = command.Command("edit_messages", "Edit the messages of a certain spam email", method)
+command_object = command.Command("edit_messages", "Edit the messages of a certain spam email", "<email> ", 1, method) # "<email> " needs space at the end to be printed correctly in documentation

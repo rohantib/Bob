@@ -1,7 +1,7 @@
 from classes import *
 from helper_functions import *
 
-def method(servers_and_threads):
+def method(servers_and_threads, arguments):
     print #Line break
     spamming_emails = []
     for email in servers_and_threads:
@@ -17,4 +17,4 @@ def method(servers_and_threads):
     print #Line break
 
 
-command_object = command.Command("currently_spamming", "Lists all emails that are currently spamming", method)
+command_object = command.Command("currently_spamming", "Lists all emails that are currently spamming", "", 0, method)
