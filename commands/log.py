@@ -1,7 +1,7 @@
 from classes import *
 from helper_functions import *
 
-def method(servers_and_threads):
+def method(servers_and_threads, arguments):
     print # Line break
     # Argument Check
     if len(arguments) != 0:
