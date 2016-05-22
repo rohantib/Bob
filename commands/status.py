@@ -31,4 +31,4 @@ def method(servers_and_threads, arguments):
     print '"%s": %s' % (email, servers_and_threads[email]["Server"].status)
     print # Line break
 
-command_object = command.Command("status", "Check the status of a specified spam email", "<email> ", 1, method) # "<email> " needs space at the end to be printed correctly in documentation
+command_object = command.Command("status", "Check the status of a specified spam email", " <email>", 1, method) # " <email>" needs space at the beginning to be printed correctly in documentation

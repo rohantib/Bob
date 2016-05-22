@@ -1,5 +1,4 @@
 from classes import *
-from helper_functions import *
 
 def method(servers_and_threads, arguments):
     if len(servers_and_threads) == 0:

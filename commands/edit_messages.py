@@ -1,6 +1,5 @@
 from classes import *
 from helper_functions import *
-import os
 
 # Helper functions
 def add_message(email, servers_and_threads):
@@ -94,4 +93,4 @@ def method(servers_and_threads, arguments):
     write_messages_to_file(email, servers_and_threads)
     print # Line break
 
-command_object = command.Command("edit_messages", "Edit the messages of a certain spam email", "<email> ", 1, method) # "<email> " needs space at the end to be printed correctly in documentation
+command_object = command.Command("edit_messages", "Edit the messages of a certain spam email", " <email>", 1, method) # " <email>" needs space at the beginning to be printed correctly in documentation

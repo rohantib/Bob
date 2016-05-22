@@ -1,5 +1,5 @@
 """
-Notation: All the content within triple-quotes and lines beginning with hashes (#) are comments. You can remove them safely in your code.
+Notation: All the content within triple-quotes and lines/sections beginning with hashes (#) are comments. You can remove them safely in your code.
 Enter the parameter you wish to enter between <> (for example, in <your_command_name> below,
 enter the name of the command you are making) when writing your code. Copy all other code, CHARACTER FOR CHARACTER.
 If you are good with Python, you can add additional code, like additional imports, where they need to go.
@@ -8,7 +8,7 @@ If you want to accept an arbitrary number of arguments, enter "infinity" for <ma
 """
 
 from classes import *
-from helper_functions import *
+from helper_functions import * # OPTIONAL: If you are not using any helper functions provided, you don't need this line.
 
 def method(servers_and_threads, arguments):
     """

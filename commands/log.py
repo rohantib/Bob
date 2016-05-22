@@ -1,6 +1,5 @@
 from classes import *
 from helper_functions import *
-import os
 
 def method(servers_and_threads):
     print # Line break
@@ -42,4 +41,4 @@ def method(servers_and_threads):
 
 
 # Uses the Command class to set up your command in a predefined format and makes it accessible in memory
-command_object = command.Command("log", "View the last couple lines of an email's log file", "<email> ", 1, method) # "<email> " needs space at the end to be printed correctly in documentation
+command_object = command.Command("log", "View the last couple lines of an email's log file", " <email>", 1, method) # " <email>" needs space at the end to be printed correctly in documentation

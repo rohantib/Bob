@@ -38,4 +38,4 @@ def method(servers_and_threads, arguments):
     print "Spamming with %s..." % (email)
     print #Line break
 
-command_object = command.Command("spam", "Begin spamming with a specific email", "<email> ", 1, method) # "<email> " needs space at the end to be printed correctly in documentation
+command_object = command.Command("spam", "Begin spamming with a specific email", " <email>", 1, method) # " <email>" needs space at the beginning to be printed correctly in documentation

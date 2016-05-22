@@ -1,6 +1,6 @@
 from classes import *
 from helper_functions import *
-import os, shutil
+import shutil
 
 def method(servers_and_threads, arguments):
     # TODO: move to helper function list_emails and email_exists
@@ -30,10 +30,12 @@ def method(servers_and_threads, arguments):
             else:
                 print "Invalid number entered."
                 return
-    shutil.rmtree(".emails/%s" % (email))
+    # Remove email from memory
     del servers_and_threads[email]
+    # Remove email from storage
+    shutil.rmtree(".emails/%s" % (email))
     print "Successfully deleted %s" % (email)
     print # Line break
 
 
-command_object = command.Command("del_email", "Remove a spam email", "<email> ", 1, method) # "<email> " needs space at the end to be printed correctly in documentation
+command_object = command.Command("del_email", "Remove a spam email", " <email>", 1, method) # " <email>" needs space at the beginning to be printed correctly in documentation
