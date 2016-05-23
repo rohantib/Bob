@@ -19,6 +19,7 @@ def change_pass(email, servers_and_threads):
     with open("%s/.password.txt" % (servers_and_threads[email]["Server"].data_path), "w") as pass_file:
         pass_file.write(new_pass)
     servers_and_threads[email]["Server"].password = new_pass
+    print "Successfully changed %s's password." % (email)
 
 def method(servers_and_threads, arguments):
     print # Line break
@@ -38,7 +39,7 @@ def method(servers_and_threads, arguments):
             print "[%d] - %s" % (email_index+1, email)
         print # Line break
         try:
-            email_num = int(raw_input("What is the number of the email would you like to edit the messages of? "))
+            email_num = int(raw_input("What is the number of the email you would like to edit the credentials of? "))
         except ValueError:
             print "You did not enter a number."
         else:

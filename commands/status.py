@@ -19,7 +19,7 @@ def method(servers_and_threads, arguments):
             print "[%d] - %s" % (email_index+1, email)
         print # Line break
         try:
-            email_num = int(raw_input("What is the number of the email would you like to edit the messages of? "))
+            email_num = int(raw_input("What is the number of the email you would like to view the status of? "))
         except ValueError:
             print "You did not enter a number."
         else:

@@ -1,7 +1,7 @@
 from classes import *
 from helper_functions import *
 
-def method(servers_and_threads):
+def method(servers_and_threads, arguments):
     currently_spamming_emails = []
     for email in servers_and_threads:
         if servers_and_threads[email]["Server"].currently_spamming == True:
