@@ -3,7 +3,6 @@ Contains class Command as a template to make new commands, along with a static f
 especially the main script, to run commands.
 """
 
-#How does this still work?
 class Command():
     list_of_commands = {}
     def __init__(self, keyword, docstring, args_docstring, max_args, method):
