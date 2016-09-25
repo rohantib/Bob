@@ -3,7 +3,9 @@ import os
 This is the code for initially setting up the spammer. Since it is initial setup, all helper functions are included
 in this file, and nothing is imported from the outside except built-in Python modules.
 """
-#Helper functions
+
+
+# Helper functions
 def email_is_valid(email):
     """
     Check if email is a valid one
@@ -14,24 +16,28 @@ def email_is_valid(email):
         return False
     return True
 
+
 def get_email():
     while True:
         email = raw_input("What is your spam email? ")
-        if email_is_valid(email) == True:
+        if email_is_valid(email):
             break
         else:
             print "That is not a valid email. Please try again."
     return email
+
 
 def get_and_write_password(data_path):
     password = raw_input("What is the password for this spam email? ")
     with open("%s/.password.txt" % (data_path), "w") as password_file:
         password_file.write(password)
 
+
 def get_and_write_message(data_path):
     message = raw_input("Enter one message for this spam email to send to targets. Use \\n for any linebreaks. Hit ENTER when you are done. Do not worry if you make a mistake or anything, you can always add, edit, and delete messages later. \n")
-    with open("%s/.messages.txt" % (data_path), "w") as messages_file:
+    with open("%s/.messages.txt" % data_path, "w") as messages_file:
         messages_file.write(message)
+
 
 def get_and_write_target(data_path):
     while True:
@@ -41,6 +47,7 @@ def get_and_write_target(data_path):
             break
     with open("%s/.targets.txt" % (data_path), "w") as targets_file:
         targets_file.write(target)
+
 
 def setup():
     print "Hi! I'm Bob, a lovely little assistant for you to get back at anyone you don't like - the techy way."
