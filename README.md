@@ -8,9 +8,9 @@ There are also a couple errors that could very likely occur that do not have a t
 Certain parts are still untested, so there may be bugs. Please do report them in Github's Issues section if you use this and find a bug.
 
 I apologize for the illegibility of parts of the code. In the process of making a simple framework
-to make writing new commands a very simple process that anyone can do, I had to cleverly and illegibly mess
-with Python to avoid many difficult issues such as an infinite loop of module imports. This is also my first larger-sized project,
-and I am just learning good coding practices.
+to make writing new commands a very simple process that anyone can do, I came up with many strange solutions (which there are likely better alternatives to) to avoid many difficult issues such as an infinite loop of module imports. This is also my first larger-sized project, and I am just learning good coding practices.
+
+Reflecting back on this, the application structure is not quite right. I have my two packages sorted by classes and helper_functions, whereas they should be sorted by function instead.
 
 The documentation for writing new commands, if you are interested in doing so, is contained in commands/template.txt. Be careful when making new commands, though, as if any error exists in the code, the spammer will be broken and will throw an error at startup.
 
