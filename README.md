@@ -1,5 +1,5 @@
 # Bob
-A nice little bot that spams people you don't like.
+A nice little bot that spams people you don't like :wink:
 
 Now fully functional with a very primitive terminal interface! Upgrades to the terminal interface will be coming soon, as it is
 quite irritating to use currently. I do not think I will be making a graphical interface for Bob, though. Sorry!
